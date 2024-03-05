@@ -2,6 +2,7 @@ package com.dvd.service.resource;
 
 import com.dvd.service.jooq.FilmRepository;
 import com.dvd.service.model.Movie;
+import com.dvd.service.model.MovieCast;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,5 +21,11 @@ public class FilmController {
   public ResponseEntity<List<Movie>> getFilms(@RequestParam Integer noOfFilms) {
 
     return ResponseEntity.ok(filmRepository.findAllFilms(noOfFilms));
+  }
+
+  @GetMapping("/films-cast")
+  public ResponseEntity<List<MovieCast>> getFilmsCast() {
+
+    return ResponseEntity.ok(filmRepository.fetchAllMoviesCast());
   }
 }
